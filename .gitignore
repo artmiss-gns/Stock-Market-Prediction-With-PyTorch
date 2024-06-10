@@ -1,0 +1,22 @@
+`**/__pycache__/*`
+
+```gitignore
+# Jupyter Notebook files
+.ipynb_checkpoints/
+test.ipynb
+
+# Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Other files
+.env
+.vscode/
+.DS_Store
+thumbs.db
+desktop.ini
+**/__pycache__/*
+
+notes.txt
