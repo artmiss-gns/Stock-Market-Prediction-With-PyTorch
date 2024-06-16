@@ -5,30 +5,30 @@ import numpy as np
 class MakeSequence(Dataset):
     def __init__(self, data, sequence_length, target):
         self.target_column_number = np.where(data.columns == target)[0][0]
-        self.target = target # target feature
+        self.target = target
         self.sequence_length = sequence_length
-        self.data = data.values # convert it to numpy array
+        self.data = data.values
         self.x, self.y = self._transform()
-        self.x = torch.tensor(self.x, dtype=torch.float)
-        self.y = torch.tensor(self.y, dtype=torch.float)
 
     def _transform(self):
         x = self._make_sequence()
         y = self._make_y(x)
+        # Remove the last input sequence as it has no corresponding target
+        x = x[:-1]
         return x, y
 
     def _make_sequence(self):
-        # sequenced_data = np.lib.stride_tricks.sliding_window_view(self.data, (self.sequence_length))
         sequenced_data = np.lib.stride_tricks.sliding_window_view(self.data, window_shape=(self.sequence_length, self.data.shape[1]))
         sequenced_data = np.squeeze(sequenced_data) # ! `squeeze` gets an argument `axis`, which should be set for higher dims
         return sequenced_data
     
     def _make_y(self, x):
         return x[1:, :, self.target_column_number]
-    
 
     def __len__(self):
-        return len(self.data)
+        return len(self.x)
     
     def __getitem__(self, index):
-        return self.x[index, :], self.y[index]
+        x = torch.tensor(self.x[index], dtype=torch.float)
+        y = torch.tensor(self.y[index], dtype=torch.float)
+        return x, y
