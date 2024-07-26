@@ -52,6 +52,7 @@ The model was evaluated on the testing set, and the results are presented in the
 ### Loss Curves
 
 The training and testing loss curves are shown below:
+
 <img src="./images/loss_curve.png" alt="Experiment_Loss_Curve" style="width: 50%; height: auto; margin: 0 auto; display: block;" />
 
 ### Predictions
