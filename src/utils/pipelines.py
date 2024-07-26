@@ -5,7 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
 import numpy as np
 
-from utils.dataset import MakeSequence
+from src.utils.dataset import MakeSequence
 
 
 class DropColumns(BaseEstimator, TransformerMixin):
@@ -46,7 +46,7 @@ class SequencePipeline(BaseEstimator, TransformerMixin):
     
 
 if __name__ == '__main__':
-    from utils.train_test_split import train_test_split
+    from src.utils.train_test_split import train_test_split
 
     SEQUENCE_NUMBER = 7
     BATCH_SIZE = 16
