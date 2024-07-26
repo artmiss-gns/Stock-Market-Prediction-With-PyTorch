@@ -1,13 +1,11 @@
-**Stock Market Prediction using LSTM: Remedy Entertainment Company**
+Stock Market Prediction with PyTorch using LSTM
 =============================================================
 
-**Overview**
------------
+## Overview
 
-This project aims to predict the stock market trend of Remedy Entertainment (Video game development company) using Long Short-Term Memory (LSTM) networks. The goal is to develop a robust model that can accurately forecast future stock prices based on historical data.
+This project aims to predict the stock market trend of **Remedy Entertainment** (Video game development company) using Long Short-Term Memory (LSTM) with **PyTorch**. The goal is to develop a robust model that can accurately forecast future stock prices based on historical data.
 
-**Dataset**
-----------
+## Dataset
 
 The dataset used in this project is retrieved from a CSV file containing historical stock prices of Remedy Company. The dataset consists of the following features:
 
@@ -18,8 +16,7 @@ The dataset used in this project is retrieved from a CSV file containing histori
 * Close
 * Volume
 
-**Preprocessing**
----------------
+## Preprocessing
 
 The following preprocessing techniques were applied to the dataset:
 
@@ -28,8 +25,7 @@ The following preprocessing techniques were applied to the dataset:
 * Feature engineering: The dataset was transformed into sequences of 7 days, with the target variable being the next day's close price
 * Data splitting: The dataset was split into training (85%) and testing (15%) sets
 
-**Model Architecture**
---------------------
+## Model Architecture
 
 The model architecture consists of an LSTM network with the following specifications:
 
@@ -41,8 +37,7 @@ The model architecture consists of an LSTM network with the following specificat
 
 The model uses the Adam optimizer with a learning rate of 0.001 and the Huber loss function as the objective function.
 
-**Training and Evaluation**
--------------------------
+## Training and Evaluation
 
 The model was trained for 6 epochs, with the following evaluation metrics:
 
@@ -52,8 +47,7 @@ The model was trained for 6 epochs, with the following evaluation metrics:
 
 The model was evaluated on the testing set, and the results are presented in the following sections.
 
-**Results**
-----------
+## Results
 
 ### Loss Curves
 
@@ -63,11 +57,10 @@ The training and testing loss curves are shown below:
 ### Predictions
 
 The predicted close prices for the testing set are shown below:
+
 <img src="./images/experiment_test_prediction.png" alt="Experiment Test Prediction" style="width: 50%; height: auto; margin: 0 auto; display: block;" />
 
-
-**Other Details**
--------------------
+## Other Details
 
 The following techniques were used in this project:
 
@@ -76,7 +69,7 @@ The following techniques were used in this project:
 * **Huber loss function**: The Huber loss function was used as the objective function to reduce the impact of outliers on the model's performance.
 * **Adam optimizer**: The Adam optimizer was used to adapt the learning rate during training, improving the model's convergence.
 
-**Conclusion**
-----------
+## Conclusion
 
 This project demonstrates the application of RNN and LSTM networks to predict the stock market trend of Remedy Company. The model achieved promising results, with a good fit to the testing data.
+
