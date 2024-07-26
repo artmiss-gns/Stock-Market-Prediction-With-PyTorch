@@ -1,51 +1,25 @@
 Stock Market Prediction with PyTorch using LSTM
 =============================================================
 
-## Overview
-
-This project aims to predict the stock market trend of **Remedy Entertainment** (Video game development company) using Long Short-Term Memory (LSTM) with **PyTorch**. The goal is to develop a robust model that can accurately forecast future stock prices based on historical data.
+This project aims to predict the stock market trends for Remedy Company using a Long Short-Term Memory (LSTM) neural network using PyTorch. The model is trained on historical stock data and uses a combination of technical indicators to make predictions.
 
 ## Dataset
-
-The dataset used in this project is retrieved from a CSV file containing historical stock prices of Remedy Company. The dataset consists of the following features:
-
-* Date
-* Open
-* High
-* Low
-* Close
-* Volume
-
-## Preprocessing
-
-The following preprocessing techniques were applied to the dataset:
-
-* Handling missing values
-* Data normalization: Min-Max Scaler and Standard Scaler were used to normalize the data
-* Feature engineering: The dataset was transformed into sequences of 7 days, with the target variable being the next day's close price
-* Data splitting: The dataset was split into training (85%) and testing (15%) sets
+The dataset used in this project is obtained from Yahoo Finance and consists of historical stock data for Remedy Company (REMEDY.HE). The dataset is preprocessed using a custom pipeline to transform the data into a format suitable for training an LSTM model.
 
 ## Model Architecture
-
-The model architecture consists of an LSTM network with the following specifications:
-
-* Input size: 2 (Close and Volume features)
-* Hidden size: 64
-* Number of layers: 4
-* Batch size: 16
-* Sequence length: 7
-
-The model uses the Adam optimizer with a learning rate of 0.001 and the Huber loss function as the objective function.
+The LSTM model used in this project consists of an input layer, four LSTM layers, and an output layer. The input layer takes in sequences of length 7, which are then fed into the LSTM layers. The output layer produces a single value representing the predicted stock price.
 
 ## Training and Evaluation
+The model is trained using a combination of mean squared error (MSE) as the loss function and Adam optimizer. The training process is divided into epochs, where each epoch consists of a forward pass, backward pass, and optimization step. The model is evaluated using the mean absolute error (MAE) metric.
 
-The model was trained for 6 epochs, with the following evaluation metrics:
+## Pipelines and Utilities
+The project uses several custom pipelines and utilities to preprocess the data and train the model. These include:
 
-* Training loss: Huber loss
-* Testing loss: Huber loss
-* Evaluation metric: Mean Absolute Error (MAE)
-
-The model was evaluated on the testing set, and the results are presented in the following sections.
+* **DropColumns**: A pipeline to drop unnecessary columns from the dataset.
+* **Scaler**: A pipeline to scale the data using Min-Max Scaler.
+* **SequencePipeline**: A pipeline to transform the data into sequences of length 7.
+* **MakeSequence**: A utility to create sequences from the dataset.
+* **train_test_split**: A utility to split the dataset into training and testing sets.
 
 ## Results
 
@@ -61,16 +35,13 @@ The predicted close prices for the testing set are shown below:
 
 <img src="./images/experiment_test_prediction.png" alt="Experiment Test Prediction" style="width: 50%; height: auto; margin: 0 auto; display: block;" />
 
-## Other Details
+## Usage
+To use this project, simply clone the repository and run the `main.py` file. This will preprocess the data, train the model, and evaluate its performance.
+Or you can just **check notebooks** files for more detailed explanation.
 
-The following techniques were used in this project:
-
-* **Batching**: The dataset was batched into sequences of 7 days, with a batch size of 16, to improve training efficiency.
-* **Sequence-to-Sequence modeling**: The LSTM network was used to model the sequence-to-sequence relationship between the input sequence and the target sequence.
-* **Huber loss function**: The Huber loss function was used as the objective function to reduce the impact of outliers on the model's performance.
-* **Adam optimizer**: The Adam optimizer was used to adapt the learning rate during training, improving the model's convergence.
-
-## Conclusion
-
-This project demonstrates the application of RNN and LSTM networks to predict the stock market trend of Remedy Company. The model achieved promising results, with a good fit to the testing data.
-
+## Requirements
+* Python 3.8+
+* PyTorch 1.9+
+* Pandas 1.3+
+* NumPy 1.20+
+* Scikit-learn 0.24+
